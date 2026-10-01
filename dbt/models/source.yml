@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ env_var('DBT_DATABASE') }}"
+    schema: raw
+    description: "Schema which stores raw tables (ETL)"
+    tables:
+      - name: weather_forecast
+        identifier: weather_forecast
+        description: "Daily Open-Meteo forecast (temp max/min, precipitation, weather code) per city, loaded by the weather_etl_to_snowflake Airflow DAG"

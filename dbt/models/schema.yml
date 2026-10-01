@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: weather_moving_avg
+    description: "7-day moving average of daily temperature per city"
+    columns:
+      - name: city
+        description: "City name"
+        data_tests:
+          - not_null
+      - name: forecast_date
+        description: "Forecast calendar date"
+        data_tests:
+          - not_null
+      - name: temp_avg_7day_moving_avg
+        description: "7-day moving average of (temp_max + temp_min) / 2"
+        data_tests:
+          - not_null
+
+  - name: weather_temp_anomaly
+    description: "Deviation of each day's average temperature from that city's own average over the loaded window"
+    columns:
+      - name: city
+        data_tests:
+          - not_null
+      - name: forecast_date
+        data_tests:
+          - not_null
+      - name: temp_anomaly
+        description: "temp_avg minus the city's baseline average temperature"
+        data_tests:
+          - not_null
+
+  - name: weather_rolling_rainfall
+    description: "Rolling 7-day cumulative precipitation per city"
+    columns:
+      - name: city
+        data_tests:
+          - not_null
+      - name: forecast_date
+        data_tests:
+          - not_null
+      - name: rolling_7day_rainfall
+        data_tests:
+          - not_null
+
+  - name: weather_dry_spell
+    description: "Consecutive dry-day (precipitation_sum = 0) streaks per city"
+    columns:
+      - name: city
+        data_tests:
+          - not_null
+      - name: dry_spell_length
+        description: "Number of consecutive dry days in this streak"
+        data_tests:
+          - not_null

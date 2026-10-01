@@ -1,0 +1,36 @@
+# Airflow runtime
+logs/*
+!logs/.gitignore
+plugins/*
+!plugins/.gitignore
+plugin/*
+!plugin/.gitignore
+config/*
+!config/.gitignore
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Snowflake keypair auth -- never commit private keys
+*.p8
+*.pem
+rsa_key*
+
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# dbt internal
+dbt/.user.yml
